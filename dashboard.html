@@ -8,98 +8,107 @@
 
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
-  <h2>ALPHA<br>SOLUÇÕES</h2>
+  <h2>ALPHA<br><span>SOLUÇÕES</span></h2>
+
   <button class="active" onclick="openPage('vendas',this)">Vendas</button>
   <button onclick="openPage('ranking',this)">Ranking</button>
   <button onclick="openPage('leads',this)">Leads</button>
   <button onclick="openPage('agendamentos',this)">Agendamentos</button>
-  <button id="btnUsers" onclick="openPage('usuarios',this)">Usuários</button>
-  <button onclick="logout()">Sair</button>
+  <button onclick="openPage('usuarios',this)">Usuários</button>
+
+  <button class="sair" onclick="logout()">Sair</button>
 </div>
 
+<!-- CONTEÚDO -->
 <div class="content">
 
-<!-- VENDAS -->
-<div id="vendas" class="page active">
-  <h1>Dashboard de Vendas</h1>
-
+  <!-- TOPO -->
   <div class="cards">
-    <div class="card">
+    <div class="card blue">
       <p>Total Vendido</p>
-      <div class="big">R$ <span id="totalVendido">0</span></div>
+      <h3>R$ <span id="totalVendido">0</span></h3>
     </div>
-    <div class="card">
+
+    <div class="card orange">
       <p>Meta Mensal</p>
-      <input id="metaValor" placeholder="Ex: 300000">
+      <input id="metaValor" placeholder="300000">
     </div>
-    <div class="card">
+
+    <div class="card blue">
       <p>% da Meta</p>
-      <div class="big"><span id="percentMeta">0%</span></div>
+      <h3><span id="percentMeta">0%</span></h3>
     </div>
   </div>
 
-  <div class="card">
-    <div class="progress"><span id="barraMeta"></span></div>
+  <!-- BARRA + GRÁFICO -->
+  <div class="grafico-card">
+    <div class="progress">
+      <span id="barraMeta"></span>
+    </div>
+    <canvas id="graficoVendas"></canvas>
   </div>
 
-  <div class="grid-main">
+  <!-- GRID -->
+  <div class="grid">
 
-    <div class="card">
+    <!-- REGISTRAR VENDA -->
+    <div class="box">
       <h3>Registrar Venda</h3>
+
       <input id="vendCliente" placeholder="Cliente">
       <input id="vendProduto" placeholder="Produto">
       <input id="vendValor" type="number" placeholder="Valor">
       <input id="vendVendedor" placeholder="Vendedor">
-      <button class="primary" onclick="addVenda()">Registrar Venda</button>
+
+      <button onclick="addVenda()">Registrar Venda</button>
+
       <ul id="listaVendas"></ul>
     </div>
 
-    <div class="card">
+    <!-- RANKING -->
+    <div class="box">
       <h3>🏆 Ranking</h3>
       <ul id="listaRanking"></ul>
     </div>
 
   </div>
-</div>
 
-<!-- LEADS -->
-<div id="leads" class="page">
-  <h1>Leads</h1>
-  <input id="leadNome" placeholder="Nome">
-  <input id="leadTelefone" placeholder="Telefone">
-  <button class="primary" onclick="addLead()">Salvar Lead</button>
-  <ul id="listaLeads"></ul>
-</div>
+  <!-- OUTRAS PÁGINAS -->
+  <div id="leads" class="page">
+    <h2>Leads</h2>
+    <input id="leadNome" placeholder="Nome">
+    <input id="leadTelefone" placeholder="Telefone">
+    <button onclick="addLead()">Salvar</button>
+    <ul id="listaLeads"></ul>
+  </div>
 
-<!-- AGENDAMENTOS -->
-<div id="agendamentos" class="page">
-  <h1>Agendamentos</h1>
-  <input id="agCliente" placeholder="Cliente">
-  <input id="agData" type="date">
-  <button class="primary" onclick="addAgendamento()">Salvar</button>
-  <ul id="listaAgendamentos"></ul>
-</div>
+  <div id="agendamentos" class="page">
+    <h2>Agendamentos</h2>
+    <input id="agCliente" placeholder="Cliente">
+    <input id="agData" type="date">
+    <button onclick="addAgendamento()">Salvar</button>
+    <ul id="listaAgendamentos"></ul>
+  </div>
 
-<!-- USUÁRIOS -->
-<div id="usuarios" class="page">
-  <h1>Usuários</h1>
-  <input id="newUser" placeholder="Usuário">
-  <input id="newPass" placeholder="Senha">
-  <select id="newRole">
-    <option value="vendedor">Vendedor</option>
-    <option value="supervisor">Supervisor</option>
-    <option value="admin">Administrador</option>
-  </select>
-  <button class="primary" onclick="addUser()">Cadastrar</button>
-  <ul id="listaUsers"></ul>
-</div>
+  <div id="usuarios" class="page">
+    <h2>Usuários</h2>
+    <input id="newUser" placeholder="Usuário">
+    <input id="newPass" placeholder="Senha">
+    <select id="newRole">
+      <option>vendedor</option>
+      <option>supervisor</option>
+      <option>admin</option>
+    </select>
+    <button onclick="addUser()">Cadastrar</button>
+    <ul id="listaUsers"></ul>
+  </div>
 
-<footer>Desenvolvido por <b>elbs_</b></footer>
+  <footer>Desenvolvido por <b>elbs_</b></footer>
 
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
