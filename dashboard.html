@@ -5,110 +5,74 @@
 <title>ALPHA SOLUÇÕES - Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <h2>ALPHA<br><span>SOLUÇÕES</span></h2>
+<nav>
+  <button onclick="show('dashboard')">Dashboard</button>
+  <button onclick="show('vendas')">Vendas</button>
+  <button onclick="show('leads')">Leads</button>
+  <button onclick="show('agendamentos')">Agendamentos</button>
+  <button onclick="show('ranking')">Ranking</button>
+  <button onclick="show('usuarios')">Usuários</button>
+  <button onclick="logout()">Sair</button>
+</nav>
 
-  <button class="active" onclick="openPage('vendas',this)">Vendas</button>
-  <button onclick="openPage('ranking',this)">Ranking</button>
-  <button onclick="openPage('leads',this)">Leads</button>
-  <button onclick="openPage('agendamentos',this)">Agendamentos</button>
-  <button onclick="openPage('usuarios',this)">Usuários</button>
+<main>
 
-  <button class="sair" onclick="logout()">Sair</button>
-</div>
+<section id="dashboard">
+  <h2>Resumo</h2>
+  <p>Total vendido: R$ <span id="total">0</span></p>
+  <p>Meta: <input id="meta" type="number"></p>
+  <p>% da meta: <span id="percent">0%</span></p>
+</section>
 
-<!-- CONTEÚDO -->
-<div class="content">
+<section id="vendas" class="hidden">
+  <h2>Vendas</h2>
+  <input id="vCliente" placeholder="Cliente">
+  <input id="vProduto" placeholder="Produto">
+  <input id="vValor" type="number" placeholder="Valor">
+  <input id="vVendedor" placeholder="Vendedor">
+  <button onclick="addVenda()">Salvar Venda</button>
+  <ul id="listaVendas"></ul>
+</section>
 
-  <!-- TOPO -->
-  <div class="cards">
-    <div class="card blue">
-      <p>Total Vendido</p>
-      <h3>R$ <span id="totalVendido">0</span></h3>
-    </div>
+<section id="leads" class="hidden">
+  <h2>Leads</h2>
+  <input id="lNome" placeholder="Nome">
+  <input id="lTel" placeholder="Telefone">
+  <button onclick="addLead()">Salvar Lead</button>
+  <ul id="listaLeads"></ul>
+</section>
 
-    <div class="card orange">
-      <p>Meta Mensal</p>
-      <input id="metaValor" placeholder="300000">
-    </div>
+<section id="agendamentos" class="hidden">
+  <h2>Agendamentos</h2>
+  <input id="aCliente" placeholder="Cliente">
+  <input id="aData" type="date">
+  <button onclick="addAgendamento()">Salvar</button>
+  <ul id="listaAgendamentos"></ul>
+</section>
 
-    <div class="card blue">
-      <p>% da Meta</p>
-      <h3><span id="percentMeta">0%</span></h3>
-    </div>
-  </div>
+<section id="ranking" class="hidden">
+  <h2>Ranking</h2>
+  <ul id="listaRanking"></ul>
+</section>
 
-  <!-- BARRA + GRÁFICO -->
-  <div class="grafico-card">
-    <div class="progress">
-      <span id="barraMeta"></span>
-    </div>
-    <canvas id="graficoVendas"></canvas>
-  </div>
+<section id="usuarios" class="hidden">
+  <h2>Usuários</h2>
+  <input id="uUser" placeholder="Usuário">
+  <input id="uPass" placeholder="Senha">
+  <select id="uRole">
+    <option>admin</option>
+    <option>supervisor</option>
+    <option>vendedor</option>
+  </select>
+  <button onclick="addUser()">Cadastrar</button>
+  <ul id="listaUsers"></ul>
+</section>
 
-  <!-- GRID -->
-  <div class="grid">
-
-    <!-- REGISTRAR VENDA -->
-    <div class="box">
-      <h3>Registrar Venda</h3>
-
-      <input id="vendCliente" placeholder="Cliente">
-      <input id="vendProduto" placeholder="Produto">
-      <input id="vendValor" type="number" placeholder="Valor">
-      <input id="vendVendedor" placeholder="Vendedor">
-
-      <button onclick="addVenda()">Registrar Venda</button>
-
-      <ul id="listaVendas"></ul>
-    </div>
-
-    <!-- RANKING -->
-    <div class="box">
-      <h3>🏆 Ranking</h3>
-      <ul id="listaRanking"></ul>
-    </div>
-
-  </div>
-
-  <!-- OUTRAS PÁGINAS -->
-  <div id="leads" class="page">
-    <h2>Leads</h2>
-    <input id="leadNome" placeholder="Nome">
-    <input id="leadTelefone" placeholder="Telefone">
-    <button onclick="addLead()">Salvar</button>
-    <ul id="listaLeads"></ul>
-  </div>
-
-  <div id="agendamentos" class="page">
-    <h2>Agendamentos</h2>
-    <input id="agCliente" placeholder="Cliente">
-    <input id="agData" type="date">
-    <button onclick="addAgendamento()">Salvar</button>
-    <ul id="listaAgendamentos"></ul>
-  </div>
-
-  <div id="usuarios" class="page">
-    <h2>Usuários</h2>
-    <input id="newUser" placeholder="Usuário">
-    <input id="newPass" placeholder="Senha">
-    <select id="newRole">
-      <option>vendedor</option>
-      <option>supervisor</option>
-      <option>admin</option>
-    </select>
-    <button onclick="addUser()">Cadastrar</button>
-    <ul id="listaUsers"></ul>
-  </div>
-
-  <footer>Desenvolvido por <b>elbs_</b></footer>
-
-</div>
+</main>
 
 <script src="script.js"></script>
 </body>
 </html>
+
