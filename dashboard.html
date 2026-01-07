@@ -20,11 +20,33 @@
 <main>
 
 <section id="dashboard">
-  <h2>Resumo</h2>
-  <p>Total vendido: R$ <span id="total">0</span></p>
-  <p>Meta: <input id="meta" type="number"></p>
-  <p>% da meta: <span id="percent">0%</span></p>
+  <h2>Dashboard</h2>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="card">
+      <p>Total Vendido</p>
+      <h3>R$ <span id="total">0</span></h3>
+    </div>
+
+    <div class="card">
+      <p>Meta Mensal</p>
+      <input id="meta" type="number" placeholder="300000">
+    </div>
+
+    <div class="card">
+      <p>% da Meta</p>
+      <h3><span id="percent">0%</span></h3>
+    </div>
+  </div>
+
+  <!-- GRÁFICO -->
+  <div class="grafico-box">
+    <h3>Vendas por Vendedor</h3>
+    <canvas id="grafico" width="600" height="300"></canvas>
+  </div>
 </section>
+
 
 <section id="vendas" class="hidden">
   <h2>Vendas</h2>
