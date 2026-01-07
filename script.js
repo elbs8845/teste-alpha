@@ -87,6 +87,17 @@ function addUser(){
   listar();
 }
 
+function cadastrarUsuario(){
+  usuarios.push({
+    login: novoLogin.value,
+    senha: novaSenha.value,
+    tipo: tipoUsuario.value
+  });
+  salvarUsuarios();
+  alert("Usuário cadastrado");
+}
+
+
 // ATUALIZAÇÕES
 function atualizar(){
   let totalVenda = vendas.reduce((s,v)=>s+v.valor,0);
