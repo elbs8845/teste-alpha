@@ -3,92 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ALPHA SOLUÇÕES - Dashboard</title>
-
-<style>
-:root{
-  --azul:#0b1d39;
-  --azul2:#142e5c;
-  --laranja:#ff8c00;
-}
-*{box-sizing:border-box;font-family:Arial}
-body{
-  margin:0;
-  background:linear-gradient(135deg,var(--azul),#122a52);
-  color:#fff;
-  display:flex;
-}
-.sidebar{
-  width:230px;
-  background:#08162e;
-  padding:20px;
-}
-.sidebar h2{text-align:center;margin-bottom:30px}
-.sidebar button{
-  width:100%;
-  padding:12px;
-  margin-bottom:8px;
-  background:none;
-  border:none;
-  color:#fff;
-  text-align:left;
-  border-radius:8px;
-  cursor:pointer;
-}
-.sidebar button.active,
-.sidebar button:hover{
-  background:var(--laranja);
-  color:#000;
-}
-.content{flex:1;padding:30px}
-.page{display:none}
-.page.active{display:block}
-.card{
-  background:var(--azul2);
-  padding:20px;
-  border-radius:14px;
-  margin-bottom:20px;
-}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-.big{font-size:28px;font-weight:bold}
-input,select{
-  width:100%;
-  padding:10px;
-  margin-top:8px;
-  border-radius:8px;
-  border:none;
-}
-button.primary{
-  background:var(--laranja);
-  border:none;
-  padding:10px;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:10px;
-}
-ul{list-style:none;padding:0}
-li{
-  background:#0e244a;
-  padding:10px;
-  border-radius:8px;
-  margin-top:6px;
-}
-.progress{
-  background:#0a1a33;
-  border-radius:12px;
-  overflow:hidden;
-}
-.progress span{
-  display:block;
-  height:20px;
-  background:linear-gradient(90deg,#ff9a00,#ff6a00);
-}
-footer{text-align:center;opacity:.6;margin-top:30px}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -105,29 +20,50 @@ footer{text-align:center;opacity:.6;margin-top:30px}
 
 <div class="content">
 
+<!-- VENDAS -->
 <div id="vendas" class="page active">
-  <h1>Vendas</h1>
+  <h1>Dashboard de Vendas</h1>
+
   <div class="cards">
-    <div class="card"><p>Total Vendido</p><div class="big">R$ <span id="totalVendido">0</span></div></div>
-    <div class="card"><p>Meta</p><input id="metaValor"></div>
-    <div class="card"><p>% da Meta</p><div class="big"><span id="percentMeta">0%</span></div></div>
+    <div class="card">
+      <p>Total Vendido</p>
+      <div class="big">R$ <span id="totalVendido">0</span></div>
+    </div>
+    <div class="card">
+      <p>Meta Mensal</p>
+      <input id="metaValor" placeholder="Ex: 300000">
+    </div>
+    <div class="card">
+      <p>% da Meta</p>
+      <div class="big"><span id="percentMeta">0%</span></div>
+    </div>
   </div>
-  <div class="card"><div class="progress"><span id="barraMeta"></span></div></div>
+
   <div class="card">
-    <input id="vendCliente" placeholder="Cliente">
-    <input id="vendProduto" placeholder="Produto">
-    <input id="vendValor" type="number" placeholder="Valor">
-    <input id="vendVendedor" placeholder="Vendedor">
-    <button class="primary" onclick="addVenda()">Registrar Venda</button>
-    <ul id="listaVendas"></ul>
+    <div class="progress"><span id="barraMeta"></span></div>
+  </div>
+
+  <div class="grid-main">
+
+    <div class="card">
+      <h3>Registrar Venda</h3>
+      <input id="vendCliente" placeholder="Cliente">
+      <input id="vendProduto" placeholder="Produto">
+      <input id="vendValor" type="number" placeholder="Valor">
+      <input id="vendVendedor" placeholder="Vendedor">
+      <button class="primary" onclick="addVenda()">Registrar Venda</button>
+      <ul id="listaVendas"></ul>
+    </div>
+
+    <div class="card">
+      <h3>🏆 Ranking</h3>
+      <ul id="listaRanking"></ul>
+    </div>
+
   </div>
 </div>
 
-<div id="ranking" class="page">
-  <h1>Ranking</h1>
-  <ul id="listaRanking"></ul>
-</div>
-
+<!-- LEADS -->
 <div id="leads" class="page">
   <h1>Leads</h1>
   <input id="leadNome" placeholder="Nome">
@@ -136,6 +72,7 @@ footer{text-align:center;opacity:.6;margin-top:30px}
   <ul id="listaLeads"></ul>
 </div>
 
+<!-- AGENDAMENTOS -->
 <div id="agendamentos" class="page">
   <h1>Agendamentos</h1>
   <input id="agCliente" placeholder="Cliente">
@@ -144,6 +81,7 @@ footer{text-align:center;opacity:.6;margin-top:30px}
   <ul id="listaAgendamentos"></ul>
 </div>
 
+<!-- USUÁRIOS -->
 <div id="usuarios" class="page">
   <h1>Usuários</h1>
   <input id="newUser" placeholder="Usuário">
@@ -158,8 +96,10 @@ footer{text-align:center;opacity:.6;margin-top:30px}
 </div>
 
 <footer>Desenvolvido por <b>elbs_</b></footer>
+
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
