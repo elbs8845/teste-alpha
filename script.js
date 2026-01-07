@@ -78,7 +78,9 @@ function atualizar(){
 
   listar();
   desenharGrafico();
+  atualizarRanking();
 }
+
 
 
 
