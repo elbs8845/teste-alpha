@@ -20,3 +20,22 @@
 <script src="script.js"></script>
 </body>
 </html>
+function login(){
+  let u = usuario.value;
+  let s = senha.value;
+
+  let user = usuarios.find(x=>x.login==u && x.senha==s);
+
+  if(!user){
+    alert("Usuário ou senha inválidos");
+    return;
+  }
+
+  localStorage.setItem("usuarioLogado", JSON.stringify(user));
+
+  if(user.tipo=="vendedor"){
+    location.href="vendedor.html";
+  }else{
+    location.href="dashboard.html";
+  }
+}
