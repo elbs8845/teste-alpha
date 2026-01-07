@@ -38,9 +38,24 @@ function addVenda(){
     valor:Number(vValor.value),
     vendedor:vVendedor.value
   });
-  localStorage.setItem("vendas", JSON.stringify(vendas));
+  let vendas = JSON.parse(localStorage.getItem("vendas")) || [];
   atualizar();
 }
+
+// SALVAR VENDA
+function salvarVenda(){
+  let venda = {
+    vendedor: vendedor.value,
+    valor: Number(valor.value),
+    meta: Number(metaVendedor.value) || 0
+  };
+
+  vendas.push(venda);
+  localStorage.setItem("vendas", JSON.stringify(vendas));
+
+  atualizar();
+}
+
 
 // LEADS
 function addLead(){
