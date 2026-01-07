@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>ALPHA SOLUÇÕES - Login</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0b1d39,#122a52);
+  font-family:Arial;
+}
+.card{
+  background:#142e5c;
+  padding:30px;
+  width:320px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  color:#fff;
+}
+h2{text-align:center;margin-bottom:20px}
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:none;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#ff8c00;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+small{display:block;text-align:center;margin-top:15px;opacity:.7}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>ALPHA SOLUÇÕES</h2>
+  <input id="user" placeholder="Usuário">
+  <input id="pass" type="password" placeholder="Senha">
+  <button onclick="login()">Entrar</button>
+  <small>Desenvolvido por elbs_</small>
+</div>
+
+<script>
+if(!localStorage.getItem("users")){
+  localStorage.setItem("users", JSON.stringify([
+    {user:"admin", pass:"123", role:"admin"}
+  ]));
+}
+
+function login(){
+  const u=user.value;
+  const p=pass.value;
+  const users=JSON.parse(localStorage.getItem("users"));
+  const found=users.find(x=>x.user===u && x.pass===p);
+  if(found){
+    localStorage.setItem("logged",JSON.stringify(found));
+    location.href="dashboard.html";
+  }else{
+    alert("Usuário ou senha inválidos");
+  }
+}
+</script>
+
+</body>
+</html>
