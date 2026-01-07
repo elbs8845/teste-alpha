@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel do Vendedor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Painel do Vendedor</h1>
+
+<div class="cards">
+  <div class="card">
+    <h3>Total Vendido</h3>
+    <p id="totalVendedor">0</p>
+  </div>
+  <div class="card">
+    <h3>Meta</h3>
+    <p id="metaVend">0</p>
+  </div>
+  <div class="card">
+    <h3>% da Meta</h3>
+    <p id="pctVend">0%</p>
+  </div>
+</div>
+
+<div class="meta-barra">
+  <div id="barraVend"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+carregarPainelVendedor();
+</script>
+
+</body>
+</html>
