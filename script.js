@@ -17,19 +17,28 @@ let users = JSON.parse(localStorage.getItem("users")) || [
 
 // LOGIN
 function login(){
-  let u = document.getElementById("usuario").value;
-  let s = document.getElementById("senha").value;
+  const u = document.getElementById("usuario").value;
+  const s = document.getElementById("senha").value;
 
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [
     {login:"admin", senha:"123", tipo:"admin"}
   ];
 
-  let user = usuarios.find(x=>x.login===u && x.senha===s);
+  const user = usuarios.find(x => x.login === u && x.senha === s);
 
   if(!user){
     alert("Usuário ou senha inválidos");
     return;
   }
+
+  localStorage.setItem("usuarioLogado", JSON.stringify(user));
+
+  if(user.tipo === "vendedor"){
+    window.location.href = "vendedor.html";
+  }else{
+    window.location.href = "dashboard.html";
+  }
+}
 
   localStorage.setItem("usuarioLogado", JSON.stringify(user));
 
