@@ -154,3 +154,31 @@ li{
   border-radius:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
+.meta-box{
+  margin:20px 0 30px;
+  background:#122b52;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.meta-info{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+  font-weight:600;
+}
+
+.meta-barra{
+  background:#07142b;
+  height:18px;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.meta-barra div{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff8c00,#ff6a00);
+  transition:width .4s ease;
+}
