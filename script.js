@@ -1,3 +1,12 @@
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [
+  {login:"admin", senha:"123", tipo:"admin"}
+];
+
+function salvarUsuarios(){
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+}
+
+
 // DADOS
 let vendas = JSON.parse(localStorage.getItem("vendas")) || [];
 let leads = JSON.parse(localStorage.getItem("leads")) || [];
