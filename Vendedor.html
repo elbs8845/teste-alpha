@@ -15,6 +15,17 @@ if(!user || user.tipo !== "vendedor"){
 </head>
 <body>
 
+  <script>
+const user = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+if(!user || user.tipo !== "vendedor"){
+  window.location.href = "index.html";
+}
+</script>
+
+<script src="script.js"></script>
+
+
 <h1>Painel do Vendedor</h1>
 
 <div class="cards">
