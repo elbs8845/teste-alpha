@@ -132,3 +132,30 @@ function desenharGrafico(){
   });
 }
 
+function atualizarRanking(){
+  let ranking = {};
+
+  vendas.forEach(v => {
+    if(!ranking[v.vendedor]) ranking[v.vendedor] = 0;
+    ranking[v.vendedor] += v.valor;
+  });
+
+  let ordenado = Object.entries(ranking)
+    .sort((a,b)=>b[1]-a[1]);
+
+  rankingLista.innerHTML = "";
+
+  ordenado.forEach((item,i)=>{
+    let medalha = "";
+    if(i==0) medalha="🥇";
+    else if(i==1) medalha="🥈";
+    else if(i==2) medalha="🥉";
+
+    let li = document.createElement("li");
+    li.innerHTML = `
+      <div>${medalha} ${item[0]}</div>
+      <span>R$ ${item[1].toLocaleString("pt-BR")}</span>
+    `;
+    rankingLista.appendChild(li);
+  });
+}
