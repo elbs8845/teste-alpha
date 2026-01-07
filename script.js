@@ -73,7 +73,6 @@ function atualizar(){
 
   percent.innerText = pct.toFixed(1) + "%";
   percentTexto.innerText = pct.toFixed(1) + "%";
-
   metaProgresso.style.width = Math.min(pct,100) + "%";
 
   listar();
@@ -147,17 +146,26 @@ function atualizarRanking(){
 
   rankingLista.innerHTML = "";
 
+  let metaValor = Number(meta.value);
+
   ordenado.forEach((item,i)=>{
     let medalha = "";
     if(i==0) medalha="🥇";
     else if(i==1) medalha="🥈";
     else if(i==2) medalha="🥉";
 
+    let bateuMeta = metaValor > 0 && item[1] >= metaValor;
+    let especial = bateuMeta ? " 🎯" : "";
+
     let li = document.createElement("li");
+    if(bateuMeta) li.classList.add("meta-batida");
+
     li.innerHTML = `
-      <div>${medalha} ${item[0]}</div>
+      <div>${medalha} ${item[0]}${especial}</div>
       <span>R$ ${item[1].toLocaleString("pt-BR")}</span>
     `;
+
     rankingLista.appendChild(li);
   });
 }
+
