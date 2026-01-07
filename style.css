@@ -182,3 +182,35 @@ li{
   background:linear-gradient(90deg,#ff8c00,#ff6a00);
   transition:width .4s ease;
 }
+
+.ranking-box{
+  background:#122b52;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  margin-top:30px;
+}
+
+.ranking-box h2{
+  margin-bottom:15px;
+  color:#ff8c00;
+}
+
+.ranking-box ul{
+  list-style:none;
+  padding:0;
+}
+
+.ranking-box li{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 15px;
+  margin-bottom:10px;
+  background:#07142b;
+  border-radius:12px;
+  font-weight:600;
+}
+
+.ranking-box li span{
+  color:#ff8c00;
+}
