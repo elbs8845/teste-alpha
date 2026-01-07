@@ -211,3 +211,23 @@ function atualizarRanking(){
     rankingLista.appendChild(li);
   });
 }
+
+function carregarPainelVendedor(){
+  let user = JSON.parse(localStorage.getItem("usuarioLogado"));
+  if(!user || user.tipo!="vendedor"){
+    location.href="index.html";
+    return;
+  }
+
+  let vendasVend = vendas.filter(v=>v.vendedor==user.login);
+  let total = vendasVend.reduce((s,v)=>s+v.valor,0);
+
+  let metaVend = vendasVend.find(v=>v.meta>0)?.meta || Number(meta.value);
+
+  let pct = metaVend>0 ? (total/metaVend)*100 : 0;
+
+  totalVendedor.innerText = total.toLocaleString("pt-BR");
+  metaVend.innerText = metaVend.toLocaleString("pt-BR");
+  pctVend.innerText = pct.toFixed(1)+"%";
+  barraVend.style.width = Math.min(pct,100)+"%";
+}
