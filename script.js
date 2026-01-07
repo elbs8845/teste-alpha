@@ -17,21 +17,29 @@ let users = JSON.parse(localStorage.getItem("users")) || [
 
 // LOGIN
 function login(){
-  const u = user.value;
-  const p = pass.value;
-  const ok = users.find(x=>x.user===u && x.pass===p);
-  if(ok){
-    localStorage.setItem("logado", ok.role);
-    window.location = "dashboard.html";
-  } else {
-    erro.innerText = "Usuário ou senha inválidos";
+  let u = document.getElementById("usuario").value;
+  let s = document.getElementById("senha").value;
+
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [
+    {login:"admin", senha:"123", tipo:"admin"}
+  ];
+
+  let user = usuarios.find(x=>x.login===u && x.senha===s);
+
+  if(!user){
+    alert("Usuário ou senha inválidos");
+    return;
+  }
+
+  localStorage.setItem("usuarioLogado", JSON.stringify(user));
+
+  if(user.tipo === "vendedor"){
+    window.location.href = "vendedor.html";
+  }else{
+    window.location.href = "dashboard.html";
   }
 }
 
-function logout(){
-  localStorage.removeItem("logado");
-  window.location = "index.html";
-}
 
 // NAVEGAÇÃO
 function show(id){
