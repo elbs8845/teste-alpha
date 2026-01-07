@@ -68,13 +68,15 @@ function atualizar(){
   let totalVenda = vendas.reduce((s,v)=>s+v.valor,0);
   total.innerText = totalVenda.toLocaleString("pt-BR");
 
-  let m = Number(meta.value || 0);
-  let pct = m ? (totalVenda/m)*100 : 0;
+  let m = Number(meta.value);
+  let pct = m > 0 ? (totalVenda / m) * 100 : 0;
+
   percent.innerText = pct.toFixed(1) + "%";
 
   listar();
   desenharGrafico();
 }
+
 
 
 function listar(){
