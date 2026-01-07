@@ -150,10 +150,15 @@ function desenharGrafico(){
 
 function atualizarRanking(){
   let ranking = {};
+  let metas = {};
 
   vendas.forEach(v => {
     if(!ranking[v.vendedor]) ranking[v.vendedor] = 0;
     ranking[v.vendedor] += v.valor;
+
+    if(v.meta && v.meta > 0){
+      metas[v.vendedor] = v.meta;
+    }
   });
 
   let ordenado = Object.entries(ranking)
@@ -161,26 +166,28 @@ function atualizarRanking(){
 
   rankingLista.innerHTML = "";
 
-  let metaValor = Number(meta.value);
+  let metaGlobal = Number(meta.value);
 
   ordenado.forEach((item,i)=>{
+    let nome = item[0];
+    let total = item[1];
+
+    let metaFinal = metas[nome] || metaGlobal;
+    let bateuMeta = metaFinal > 0 && total >= metaFinal;
+
     let medalha = "";
     if(i==0) medalha="🥇";
     else if(i==1) medalha="🥈";
     else if(i==2) medalha="🥉";
 
-    let bateuMeta = metaValor > 0 && item[1] >= metaValor;
-    let especial = bateuMeta ? " 🎯" : "";
-
     let li = document.createElement("li");
     if(bateuMeta) li.classList.add("meta-batida");
 
     li.innerHTML = `
-      <div>${medalha} ${item[0]}${especial}</div>
-      <span>R$ ${item[1].toLocaleString("pt-BR")}</span>
+      <div>${medalha} ${nome} ${bateuMeta ? "🎯" : ""}</div>
+      <span>R$ ${total.toLocaleString("pt-BR")} / Meta ${metaFinal.toLocaleString("pt-BR")}</span>
     `;
 
     rankingLista.appendChild(li);
   });
 }
-
