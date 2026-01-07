@@ -72,10 +72,14 @@ function atualizar(){
   let pct = m > 0 ? (totalVenda / m) * 100 : 0;
 
   percent.innerText = pct.toFixed(1) + "%";
+  percentTexto.innerText = pct.toFixed(1) + "%";
+
+  metaProgresso.style.width = Math.min(pct,100) + "%";
 
   listar();
   desenharGrafico();
 }
+
 
 
 
