@@ -7,6 +7,19 @@
 </head>
 <body>
 
+  <script>
+let user = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+if(!user){
+  location.href="index.html";
+}
+
+if(user.tipo === "vendedor"){
+  location.href="vendedor.html";
+}
+</script>
+
+
 <nav>
   <button onclick="show('dashboard')">Dashboard</button>
   <button onclick="show('vendas')">Vendas</button>
