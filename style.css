@@ -1,7 +1,131 @@
-body{font-family:Arial;margin:0}
-nav{background:#0b1d39;padding:10px}
-nav button{margin:3px}
-.hidden{display:none}
-.login{display:flex;justify-content:center;align-items:center;height:100vh}
-.login-box{padding:30px;border:1px solid #ccc}
+:root{
+  --azul:#0b1d39;
+  --azul2:#122b52;
+  --azul3:#1b3f75;
+  --laranja:#ff8c00;
+  --branco:#ffffff;
+}
 
+*{
+  box-sizing:border-box;
+  font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--azul),#07142b);
+  color:var(--branco);
+}
+
+/* LOGIN */
+.login{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.login-box{
+  background:var(--azul2);
+  padding:40px;
+  border-radius:18px;
+  width:320px;
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  text-align:center;
+}
+
+.login-box h1{
+  margin-bottom:25px;
+  letter-spacing:1px;
+}
+
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border:none;
+  border-radius:10px;
+  outline:none;
+}
+
+.login-box button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:var(--laranja);
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* NAV */
+nav{
+  background:var(--azul2);
+  padding:15px;
+  display:flex;
+  gap:10px;
+}
+
+nav button{
+  background:var(--azul3);
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+}
+
+nav button:hover{
+  background:var(--laranja);
+  color:#000;
+}
+
+/* CONTEÚDO */
+main{
+  padding:25px;
+}
+
+section{
+  background:var(--azul2);
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:25px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+h2{
+  margin-top:0;
+}
+
+/* INPUTS */
+input, select{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none;
+}
+
+/* BOTÕES */
+section button{
+  background:var(--laranja);
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* LISTAS */
+ul{
+  list-style:none;
+  padding:0;
+  margin-top:12px;
+}
+
+li{
+  background:#0e244a;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:6px;
+}
