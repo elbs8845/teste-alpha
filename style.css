@@ -214,3 +214,8 @@ li{
 .ranking-box li span{
   color:#ff8c00;
 }
+
+.meta-batida{
+  border:2px solid #ff8c00;
+  box-shadow:0 0 15px rgba(255,140,0,.6);
+}
