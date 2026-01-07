@@ -138,3 +138,11 @@ if(user.tipo === "vendedor"){
   <option value="supervisor">Supervisor</option>
 </select>
 <button onclick="cadastrarUsuario()">Cadastrar</button>
+<script>
+let user = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+if(user.tipo === "supervisor"){
+  document.getElementById("cadastroUsuarios").style.display="none";
+}
+</script>
+
