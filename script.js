@@ -65,12 +65,17 @@ function addUser(){
 
 // ATUALIZAÇÕES
 function atualizar(){
-  let total = vendas.reduce((s,v)=>s+v.valor,0);
-  total.innerText = total;
-  let m = Number(meta.value||0);
-  percent.innerText = m ? ((total/m)*100).toFixed(1)+"%" : "0%";
+  let totalVenda = vendas.reduce((s,v)=>s+v.valor,0);
+  total.innerText = totalVenda.toLocaleString("pt-BR");
+
+  let m = Number(meta.value || 0);
+  let pct = m ? (totalVenda/m)*100 : 0;
+  percent.innerText = pct.toFixed(1) + "%";
+
   listar();
+  desenharGrafico();
 }
+
 
 function listar(){
   listaVendas.innerHTML = vendas.map(v=>`<li>${v.cliente} - ${v.vendedor} - R$${v.valor}</li>`).join("");
@@ -87,3 +92,37 @@ function listar(){
 }
 
 window.onload = atualizar;
+
+function desenharGrafico(){
+  const canvas = document.getElementById("grafico");
+  if(!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  let dados = {};
+  vendas.forEach(v=>{
+    dados[v.vendedor] = (dados[v.vendedor] || 0) + v.valor;
+  });
+
+  const vendedores = Object.keys(dados);
+  const valores = Object.values(dados);
+  const max = Math.max(...valores, 1);
+
+  const larguraBarra = 50;
+  const espacamento = 30;
+  const base = canvas.height - 30;
+
+  vendedores.forEach((v,i)=>{
+    let altura = (valores[i] / max) * 200;
+    let x = 40 + i * (larguraBarra + espacamento);
+
+    ctx.fillStyle = "#ff8c00";
+    ctx.fillRect(x, base - altura, larguraBarra, altura);
+
+    ctx.fillStyle = "#fff";
+    ctx.fillText(v, x, base + 15);
+    ctx.fillText("R$"+valores[i], x, base - altura - 5);
+  });
+}
+
